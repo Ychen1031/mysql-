@@ -6,5 +6,5 @@ def draw_christmas_tree(height):
     print(' ' * (height - 1) + '|')
 
 # 設定聖誕樹的高度
-tree_height = 5
+tree_height = 7
 draw_christmas_tree(tree_height)
