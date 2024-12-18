@@ -36,8 +36,8 @@ async function showMember() {
                             <td>${member.email}</td>
                             <td>${member.password}</td>
                             <td>
-                                <button class="btn btn-edit" data-id="${member.MemberID}" id="upd_member_${member.MemberID}">編輯</button>
-                                <button class="btn btn-delete" data-id="${member.MemberID}" id="del_member_${member.MemberID}">刪除</button>
+                                <button class="btn btn-edit" data-id="${member.mId}" id="upd_member_${member.mId}">編輯</button>
+                                <button class="btn btn-delete" data-id="${member.mId}" id="del_member_${member.mId}">刪除</button>
                             </td>
                         </tr>`;
                 });
@@ -75,16 +75,16 @@ function bindMemberEvents() {
     // 編輯會員
     document.querySelectorAll('.btn-edit').forEach(button => {
         button.addEventListener('click', () => {
-            const memberId = button.getAttribute('data-id');
-            alert(`編輯功能尚未實現，會員 ID: ${memberId}`);
+            const mId = button.getAttribute('data-id');
+            alert(`編輯功能尚未實現，會員 ID: ${mId}`);
         });
     });
 
     // 刪除會員
     document.querySelectorAll('.btn-delete').forEach(button => {
         button.addEventListener('click', () => {
-            const memberId = button.getAttribute('data-id');
-            alert(`刪除功能尚未實現，會員 ID: ${memberId}`);
+            const mId = button.getAttribute('data-id');
+            alert(`刪除功能尚未實現，會員 ID: ${mId}`);
         });
     });
 }

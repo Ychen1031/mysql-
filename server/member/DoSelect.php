@@ -6,7 +6,7 @@ function member_DoSelect() {
     $response = DB();
     if ($response['status'] == 200) {
         $conn = $response['result'];
-        if (isset($_POST['id'])) {
+        if (isset($_POST['id'])){
             $id = $_POST['id'];
             $sql = "SELECT * FROM `member` WHERE id=?";
             $stmt = $conn -> prepare($sql);
