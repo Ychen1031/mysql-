@@ -2,7 +2,7 @@
 
 require_once './DB.php';
 
-function member_DoSelect() {
+function member_DoInsert() {
     $mId = $_POST['mId'];
     $name = $_POST['name'];
     $phone = $_POST['phone'];

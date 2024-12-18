@@ -26,7 +26,6 @@ function startPage() {
     <!-- 主內容區 -->
     <main class="admin-content">
         <div class="container">
-            <h2>資料庫管理 - Product 資料表</h2>
             <p><div id="content"></div></p>           
         </div>
     </main>
@@ -43,8 +42,8 @@ function startPage() {
     <button id="order1">訂購</button>
     <button id="member">會員</button>
     <div id="crud"></div>
-
-    `
+    `;
+    
     return page;
 }
 
