@@ -11,11 +11,21 @@ switch ($action) {
         require_once './product/DoSelect.php';
         $response = product_DoSelect();
         break;
+
     case 'product_DoInsert':
         require_once './product/DoInsert.php';
         $response = product_DoInsert();
         break;
 
+    case 'product_DoDelete':
+        require_once './product/DoDelete.php';
+        $response = product_DoDelete();
+        break;
+
+    case 'product_DoUpdate':
+        require_once './product/DoUpdate.php';
+        $response = product_DoUpdate();
+        break;
 
     case 'member_DoSelect':
         require_once './member/DoSelect.php';
