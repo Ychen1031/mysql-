@@ -4,11 +4,11 @@ async function showProduct() {
         const response = res['data'];
         let str = `<h2>資料庫管理 - Product 資料表</h2>
         </table>
-                <!-- 操作按鈕 -->
-                <p><div class="action-buttons">
-                    <button class="btn btn-add" id='add_product'>新增資料</button>
-                    <button class="btn btn-refresh">重新整理</button>
-                </div></p>`;
+            <!-- 操作按鈕 -->
+            <p><div class="action-buttons">
+                <button class="btn btn-add" id='add_product'>新增資料</button>
+                <button class="btn btn-refresh" id='refresh_product'>重新整理</button>
+            </div></p>`;
         switch (response['status']) {
             case 200:
                 let rows = response['result'];
