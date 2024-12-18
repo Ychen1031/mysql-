@@ -6,7 +6,14 @@ window.onload = () => {
 
     document.getElementById('sel_product').onclick = async () => {
         document.getElementById('content').innerHTML = await showProduct();
+
+        document.getElementById('add_product').onclick = () => {
+            document.getElementById("add-data-btn").addEventListener("click", function () {
+                $("#add-data-modal").modal("show"); // 需要引入 Bootstrap 的 JavaScript
+              });
+        }
     }
+    
 
     document.getElementById('product').onclick = () => {
         document.getElementById('crud').innerHTML = `

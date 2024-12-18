@@ -7,10 +7,15 @@ if (isset($_GET['action'])) {
 }
 
 switch ($action) {
-    case 'DoSelect':
+    case 'product_DoSelect':
         require_once './product/DoSelect.php';
-        $response = DoSelect();
+        $response = product_DoSelect();
         break;
+    case 'product_DoInsert':
+        require_once './product/DoInsert.php';
+        $response = product_DoInsert();
+        break;
+
     default:
         $response['status'] = 404;
         $response['message'] = 'action not found';

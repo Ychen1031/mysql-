@@ -2,7 +2,7 @@
 
 require_once './DB.php';
 
-function DoSelect() {
+function product_DoSelect() {
     $response = DB();
     if ($response['status'] == 200) {
         $conn = $response['result'];

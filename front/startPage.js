@@ -27,12 +27,7 @@ function startPage() {
     <main class="admin-content">
         <div class="container">
             <h2>資料庫管理 - Product 資料表</h2>
-            <p><div id="content"></div></p>
-
-            
-            
-                
-            
+            <p><div id="content"></div></p>           
         </div>
     </main>
 
