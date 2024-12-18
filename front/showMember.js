@@ -30,13 +30,6 @@ async function showMember() {
                 rows.forEach((member, index) => {
                     str += `
                         <tr data-index="${index}">
-<<<<<<<<< Temporary merge branch 1
-                            <td>${member.mId}</td>
-                            <td>${member.Name}</td>
-                            <td>${member.Phone}</td>
-                            <td>${member.Email}</td>
-                            <td>${member.Password}</td>
-=========
                             <td>${member.mID}</td>
                             <td>${member.name}</td>
                             <td>${member.phone}</td>

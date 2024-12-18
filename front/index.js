@@ -48,22 +48,43 @@ window.onload = () => {
                 resetForm();  // 只清空輸入欄資料
             };
         }
-<<<<<<<<< Temporary merge branch 1
+    };
 
-
+    // 會員頁面
     document.getElementById('sel_member').onclick = async () => {
         document.getElementById('content').innerHTML = await showMember();
-=========
-    }
-    
-    // 查詢會員
-    document.getElementById('sel_member').onclick = async () => {
-        console.log(123);
-        
-        document.getElementById('content').innerHTML = await showMember();
-    }
->>>>>>>>> Temporary merge branch 2
 
+        document.getElementById('add_member').onclick = async () => {
+            document.getElementById('content').innerHTML = await addMemberPage();
+
+            // 新增會員
+            document.getElementById('addMember').onclick = () => {
+                let data = {
+                    "mId": document.getElementById('mId').value,
+                    "name": document.getElementById('name').value,
+                    "email": document.getElementById('email').value,
+                    'phone': document.getElementById('phone').value,
+                    'password': document.getElementById('password').value
+                };
+
+                axios.post('../server/index.php?action=member_DoInsert', Qs.stringify(data))
+                    .then(res => {
+                        const response = res['data'];
+                        document.getElementById('content').innerHTML = `<div class="message">${response['message']}</div>`;
+                    })
+                    .catch(err => {
+                        console.error(err);
+                    })
+            };
+
+            // 重設按鈕
+            document.getElementById('re').onclick = () => {
+                resetForm();  // 只清空輸入欄資料
+            };
+        };
+    };
+
+    // CRUD 操作按鈕
     document.getElementById('product').onclick = () => {
         document.getElementById('crud').innerHTML = `
         <button id='add_product'>新增</button>
