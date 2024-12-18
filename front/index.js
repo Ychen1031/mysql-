@@ -1,3 +1,4 @@
+import { addProductPage } from "./addProductPage.js";
 import { showProduct } from "./showProduct.js";
 import { startPage } from "./startPage.js"
 
@@ -8,12 +9,9 @@ window.onload = () => {
         document.getElementById('content').innerHTML = await showProduct();
 
         document.getElementById('add_product').onclick = () => {
-            document.getElementById("add-data-btn").addEventListener("click", function () {
-                $("#add-data-modal").modal("show"); // 需要引入 Bootstrap 的 JavaScript
-              });
+            addProductPage();
         }
     }
-    
 
     document.getElementById('product').onclick = () => {
         document.getElementById('crud').innerHTML = `

@@ -16,7 +16,7 @@ function startPage() {
                         <li><a href="#">庫存管理</a></li>
                     </ul>
                 </li>
-                <li><a href="#">用戶管理</a></li>
+                <li><a href="#" id='sel_member'>會員管理</a></li>
                 <li><a href="#">系統設定</a></li>
             </ul>
         </nav>
