@@ -30,7 +30,7 @@ async function showMember() {
                 rows.forEach((member, index) => {
                     str += `
                         <tr data-index="${index}">
-                            <td>${member.mID}</td>
+                            <td>${member.mId}</td>
                             <td>${member.name}</td>
                             <td>${member.phone}</td>
                             <td>${member.email}</td>
