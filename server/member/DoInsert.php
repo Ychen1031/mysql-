@@ -11,24 +11,27 @@ function member_DoInsert() {
     
     $response = DB();
     $conn = $response['result'];
-    
-    $sql = "INSERT INTO `member` (`mId`, `name`, `phone`, `email`, `password`) VALUES (?,?,?,?,?);";
-    $stmt = $conn->prepare($sql);
-    $result = $stmt->execute([$mId, $name, $phone, $email, $password]);
-    
-    if ($result) {
-        $count = $stmt->rowcount();
-        if ($count<1) {
-            $response['status'] = 204;
-            $response['message'] = '新增失敗';
+    try {
+        if (empty($mId) || empty($name) || empty($phone) || empty($email) || empty($password)) {
+            $response['status'] = 400;
+            $response['message'] = '所有欄位皆為必填';
         } else {
+            $sql = "INSERT INTO `member` (`mId`, `name`, `phone`, `email`, `password`) VALUES (?,?,?,?,?);";
+            $stmt = $conn->prepare($sql);
+            $result = $stmt->execute([$mId, $name, $phone, $email, $password]);
+            
+            if ($result) {
             $response['status'] = 200;
             $response['message'] = '新增成功';
+            } else {
+            $response['status'] = 404;
+            $response['message'] = '新增失敗';
+            }
         }
-    } else {
-        $response['status'] = 400;
-        $response['message'] = 'SQL錯誤';
+    } catch (PDOException $e) {
+        $response['status'] = 500;
+        $response['message'] = '資料庫錯誤: '. $e->getMessage();
     }
-    
+
     return ($response);
 }
