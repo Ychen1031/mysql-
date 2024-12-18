@@ -3,6 +3,9 @@ import { showProduct } from "./showProduct.js";
 import { startPage } from "./startPage.js";
 import { showMember } from "./showMember.js";
 import { addMemberPage } from "./addMemberPage.js";
+import { DoAddProduct } from "./doAddProduct.js";
+import { DoUpdProduct } from "./DoUpdProduct.js";
+import { DoDelProduct } from "./DoDelProduct.js";
 
 window.onload = () => {
     document.getElementById('root').innerHTML = startPage();
@@ -16,31 +19,21 @@ window.onload = () => {
         });
     }
 
-    // 產品頁面
+    // 產品查詢
     document.getElementById('sel_product').onclick = async () => {
         document.getElementById('content').innerHTML = await showProduct();
+
+        // 重新整理
+        document.getElementById('refresh_product').onclick = async () => {
+            await document.getElementById('sel_product').onclick();
+        };
 
         document.getElementById('add_product').onclick = async () => {
             document.getElementById('content').innerHTML = await addProductPage();
 
             // 新增產品
             document.getElementById('add').onclick = () => {
-                let data = {
-                    "pId": document.getElementById('pId').value,
-                    "pName": document.getElementById('pName').value,
-                    "category": document.getElementById('category').value,
-                    'price': document.getElementById('price').value,
-                    'size': document.getElementById('size').value
-                };
-
-                axios.post('../server/index.php?action=product_DoInsert', Qs.stringify(data))
-                    .then(res => {
-                        const response = res['data'];
-                        document.getElementById('content').innerHTML = `<div class="message">${response['message']}</div>`;
-                    })
-                    .catch(err => {
-                        console.error(err);
-                    })
+                DoAddProduct();
             }
 
             // 重設按鈕
@@ -48,6 +41,20 @@ window.onload = () => {
                 resetForm();  // 只清空輸入欄資料
             };
         }
+        // 刪除產品
+        document.querySelectorAll('#del_product').forEach(button => {
+            button.onclick = (event) => {
+                DoDelProduct(event);
+            };
+            
+        });
+        // 更新產品
+        document.querySelectorAll('#upd_product').forEach(button => {
+            button.onclick = (event) => {
+                DoUpdProduct(event);
+            }
+
+        })
     };
 
     // 會員頁面
@@ -59,8 +66,9 @@ window.onload = () => {
 
             // 新增會員
             document.getElementById('addMember').onclick = () => {
+                const mId = document.getElementById('mId').value;
                 let data = {
-                    "mId": document.getElementById('mId').value,
+                    "mId": mId,
                     "name": document.getElementById('name').value,
                     "email": document.getElementById('email').value,
                     'phone': document.getElementById('phone').value,
@@ -70,7 +78,8 @@ window.onload = () => {
                 axios.post('../server/index.php?action=member_DoInsert', Qs.stringify(data))
                     .then(res => {
                         const response = res['data'];
-                        document.getElementById('content').innerHTML = `<div class="message">${response['message']}</div>`;
+                        
+                        document.getElementById('content').innerHTML = `<div class="message">編號${mId}${response['message']}</div>`;
                     })
                     .catch(err => {
                         console.error(err);
@@ -82,26 +91,5 @@ window.onload = () => {
                 resetForm();  // 只清空輸入欄資料
             };
         };
-    };
-
-    // CRUD 操作按鈕
-    document.getElementById('product').onclick = () => {
-        document.getElementById('crud').innerHTML = `
-        <button id='add_product'>新增</button>
-        <button id='upd_product'>修改</button>
-        <button id='del_product'>刪除</button>
-        <button id='sel_product'>查詢</button>
-        <button id='re'>重設</button>  <!-- 重設按鈕 -->
-        `;
-    };
-
-    document.getElementById('member').onclick = () => {
-        document.getElementById('crud').innerHTML = `
-        <button id='add_member'>新增</button>
-        <button id='upd_member'>修改</button>
-        <button id='del_member'>刪除</button>
-        <button id='sel_member'>查詢</button>
-        <button id='re'>重設</button>  <!-- 重設按鈕 -->
-        `;
     };
 };
