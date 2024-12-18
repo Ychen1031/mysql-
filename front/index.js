@@ -13,9 +13,9 @@ window.onload = () => {
             addProductPage();
         }
 
+
     document.getElementById('sel_member').onclick = async () => {
         document.getElementById('content').innerHTML = await showMember();
-    
 
     document.getElementById('product').onclick = () => {
         document.getElementById('crud').innerHTML = `
