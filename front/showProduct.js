@@ -2,7 +2,13 @@ async function showProduct() {
     try {
         const res = await axios.get('../server/index.php?action=product_DoSelect');
         const response = res['data'];
-        let str = "";
+        let str = `<h2>資料庫管理 - Product 資料表</h2>
+        </table>
+                <!-- 操作按鈕 -->
+                <p><div class="action-buttons">
+                    <button class="btn btn-add" id='add_product'>新增資料</button>
+                    <button class="btn btn-refresh">重新整理</button>
+                </div></p>`;
         switch (response['status']) {
             case 200:
                 let rows = response['result'];
@@ -33,14 +39,8 @@ async function showProduct() {
                             </td>
                         </tr>`;
                 });
-                str += `
-                    </tbody>
-                </table>
-                <!-- 操作按鈕 -->
-                <p><div class="action-buttons">
-                    <button class="btn btn-add" id='add_product'>新增資料</button>
-                    <button class="btn btn-refresh">重新整理</button>
-                </div></p>`;
+                str += `</tbody>`;
+
                 break;
             default:
                 str = response['message'];

@@ -269,3 +269,16 @@ select:focus {
     background-color: #5a6268;
     box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
 }
+
+
+/* 新增完成訊息 */
+.message {
+    background-color: #f8f9fa; /* 背景色 */
+    color: #004085;           /* 文字顏色 */
+    border: 1px solid #ced4da; /* 邊框 */
+    padding: 15px;            /* 內邊距 */
+    margin-top: 20px;         /* 與其他元素的間距 */
+    border-radius: 5px;       /* 圓角 */
+    font-size: 16px;          /* 字體大小 */
+    font-weight: bold;        /* 粗體 */
+}

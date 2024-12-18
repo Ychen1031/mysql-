@@ -3,7 +3,7 @@ async function showMember() {
         // 發送 API 請求獲取會員資料
         const res = await axios.get('../server/index.php?action=member_DoSelect');
         const response = res['data'];
-        let str = "";
+        let str = "<h2>資料庫管理 - Member 資料表</h2>";
 
         // 根據 API 回應狀態碼處理資料
         switch (response['status']) {
@@ -11,6 +11,11 @@ async function showMember() {
                 const rows = response['result'];
                 str += `
                 <table class="data-table">
+                    <!-- 操作按鈕 -->
+                    <div class="action-buttons">
+                        <button class="btn btn-add" id="add_member">新增會員</button>
+                        <button class="btn btn-refresh" id="refresh_member">重新整理</button>
+                    </div>
                     <thead>
                         <tr>
                             <th>會員ID</th>
@@ -25,11 +30,11 @@ async function showMember() {
                 rows.forEach((member, index) => {
                     str += `
                         <tr data-index="${index}">
-                            <td>${member.MemberID}</td>
-                            <td>${member.Name}</td>
-                            <td>${member.Phone}</td>
-                            <td>${member.Email}</td>
-                            <td>${member.Password}</td>
+                            <td>${member.mID}</td>
+                            <td>${member.name}</td>
+                            <td>${member.phone}</td>
+                            <td>${member.email}</td>
+                            <td>${member.password}</td>
                             <td>
                                 <button class="btn btn-edit" data-id="${member.MemberID}" id="upd_member_${member.MemberID}">編輯</button>
                                 <button class="btn btn-delete" data-id="${member.MemberID}" id="del_member_${member.MemberID}">刪除</button>
@@ -38,12 +43,7 @@ async function showMember() {
                 });
                 str += `
                     </tbody>
-                </table>
-                <!-- 操作按鈕 -->
-                <div class="action-buttons">
-                    <button class="btn btn-add" id="add_member">新增會員</button>
-                    <button class="btn btn-refresh" id="refresh_member">重新整理</button>
-                </div>`;
+                </table>`;
                 break;
             default:
                 str = `<div class="error-message">${response['message']}</div>`;

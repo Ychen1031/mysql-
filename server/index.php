@@ -22,9 +22,9 @@ switch ($action) {
         $response = member_DoSelect();
         break;
     
-    case 'product_DoInsert':
+    case 'member_DoInsert':
         require_once './member/DoInsert.php';
-        $response = product_DoInsert();
+        $response = member_DoInsert();
         break;
 
     default:

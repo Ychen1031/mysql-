@@ -12,23 +12,27 @@ function product_DoInsert() {
     $response = DB();
     $conn = $response['result'];
     
-    $sql = "INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES (?,?,?,?,?);";
-    $stmt = $conn->prepare($sql);
-    $result = $stmt->execute([$pId, $pName, $category, $price, $size]);
-    
-    if ($result) {
-        $count = $stmt->rowcount();
-        if ($count<1) {
-            $response['status'] = 204;
-            $response['message'] = '新增失敗';
+    try {
+        if (empty($pId) || empty($pName) || empty($category) || empty($price) || empty($size)) {
+            $response['status'] = 400;
+            $response['message'] = '所有欄位皆為必填';
         } else {
+            $sql = "INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES (?,?,?,?,?);";
+            $stmt = $conn->prepare($sql);
+            $result = $stmt->execute([$pId, $pName, $category, $price, $size]);
+            
+            if ($result) {
             $response['status'] = 200;
             $response['message'] = '新增成功';
+            } else {
+            $response['status'] = 404;
+            $response['message'] = '新增失敗';
+            }
         }
-    } else {
-        $response['status'] = 400;
-        $response['message'] = 'SQL錯誤';
+    } catch (PDOException $e) {
+        $response['status'] = 500;
+        $response['message'] = '資料庫錯誤: '. $e->getMessage();
     }
-    
+
     return ($response);
 }
