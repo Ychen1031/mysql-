@@ -31,6 +31,9 @@ function addProductPage() {
     document.getElementById('add').onclick = () => {
         console.log(123);
     }
+    document.getElementById('re').onclick = () => {
+        document.querySelector('input[type="text"]').value = '';
+    }
 }
 
 export { addProductPage };
