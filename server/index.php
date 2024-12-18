@@ -16,6 +16,17 @@ switch ($action) {
         $response = product_DoInsert();
         break;
 
+
+    case 'member_DoSelect':
+        require_once './member/DoSelect.php';
+        $response = member_DoSelect();
+        break;
+    
+    case 'product_DoInsert':
+        require_once './member/DoInsert.php';
+        $response = product_DoInsert();
+        break;
+
     default:
         $response['status'] = 404;
         $response['message'] = 'action not found';
