@@ -45,7 +45,6 @@ async function showProduct() {
             default:
                 str = response['message'];
                 break;
-            
         }
         return str;
     } catch (err) {
