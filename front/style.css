@@ -1,0 +1,284 @@
+/* 基本樣式重設 */
+body, h1, h2, p, ul, li, a, button, table, th, td {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 頁面容器 */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* 頁面標題 */
+.admin-header {
+    background-color: #004085;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.admin-header h1 {
+    margin-bottom: 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    background-color: #002752;
+    border-radius: 5px;
+}
+
+/* 主內容 */
+.admin-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-content h2 {
+    color: #004085;
+    margin-bottom: 20px;
+}
+
+.admin-content p {
+    margin-bottom: 20px;
+}
+
+/* 操作按鈕 */
+.action-buttons {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-refresh {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* 資料表格 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.data-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.data-table td button {
+    margin: 0 5px;
+}
+
+/* 查詢下拉式選單 */
+/* 基本樣式 */
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative; /* 為了讓下拉選單絕對定位 */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+}
+
+/* 下拉選單樣式 */
+/* 下拉選單樣式 */
+.dropdown-menu {
+    display: none; /* 預設不顯示 */
+    position: absolute;
+    top: 100%; /* 位於父元素的下方 */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 1000;
+
+    /* 新增以下兩行防止內容換行 */
+    white-space: nowrap; /* 防止文字換行 */
+    min-width: 150px; /* 設定下拉選單最小寬度 */
+}
+
+/* 子項目樣式 */
+.dropdown-menu li {
+    text-align: left;
+    padding: 5px 20px;
+}
+
+.dropdown-menu li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+}
+
+/* 顯示下拉選單 */
+.dropdown:hover .dropdown-menu {
+    display: block; /* 滑鼠懸停時顯示 */
+}
+
+
+/* 新增畫面css */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* 標籤樣式 */
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block; /* 使標籤換行 */
+    color: #555;
+}
+
+/* 輸入框與選單樣式 */
+input[type="text"],
+input[type="number"],
+select {
+    width: 80%; /* 滿版寬度 */
+    padding: 8px 12px; /* 內邊距 */
+    border: 1px solid #ccc; /* 邊框顏色 */
+    border-radius: 4px; /* 圓角 */
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s; /* 邊框過渡效果 */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #007bff; /* 聚焦時變成藍色 */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* 按鈕樣式 */
+.btn {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
+}
+
+
+/* 新增完成訊息 */
+.message {
+    background-color: #f8f9fa; /* 背景色 */
+    color: #004085;           /* 文字顏色 */
+    border: 1px solid #ced4da; /* 邊框 */
+    padding: 15px;            /* 內邊距 */
+    margin-top: 20px;         /* 與其他元素的間距 */
+    border-radius: 5px;       /* 圓角 */
+    font-size: 16px;          /* 字體大小 */
+    font-weight: bold;        /* 粗體 */
+}
