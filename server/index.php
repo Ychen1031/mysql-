@@ -36,6 +36,18 @@ switch ($action) {
         require_once './member/DoInsert.php';
         $response = member_DoInsert();
         break;
+    
+    case 'member_DoUpdate':
+        require_once './member/DoUpdate.php';
+        $response = member_DoUpdate();
+        break;
+    
+    case 'member_DoDelete':
+        require_once './member/DoDelete.php';
+        $response = member_DoDelete();
+        break;
+    
+    
 
     default:
         $response['status'] = 404;

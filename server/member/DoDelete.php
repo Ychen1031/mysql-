@@ -3,13 +3,14 @@
 require_once './DB.php';
 
 function member_DoDelete() {
+    
     $response = DB();
     if ($response['status'] == 200) {
         $conn = $response['result'];
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             // 使用預備語句執行刪除操作
-            $sql = "DELETE FROM `member` WHERE id=?";
+            $sql = "DELETE FROM `member` WHERE mId=?";
             $stmt = $conn->prepare($sql);
             $result = $stmt->execute([$id]);
             

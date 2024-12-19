@@ -36,8 +36,8 @@ async function showMember() {
                             <td>${member.email}</td>
                             <td>${member.password}</td>
                             <td>
-                                <button class="btn btn-edit" data-id="${member.MemberID}" id="upd_member_${member.MemberID}">編輯</button>
-                                <button class="btn btn-delete" data-id="${member.MemberID}" id="del_member_${member.MemberID}">刪除</button>
+                                <button class="btn btn-edit" id="upd_member">編輯</button>
+                                <button class="btn btn-delete" id="del_member">刪除</button>
                             </td>
                         </tr>`;
                 });
@@ -56,37 +56,4 @@ async function showMember() {
     }
 }
 
-// 綁定會員管理的按鈕事件
-function bindMemberEvents() {
-    // 新增會員
-    document.getElementById('add_member')?.addEventListener('click', () => {
-        alert('新增會員功能尚未實現！');
-    });
-
-    // 重新整理會員列表
-    document.getElementById('refresh_member')?.addEventListener('click', async () => {
-        const memberContainer = document.getElementById('crud'); // 假設會員表格插入在 #crud 容器內
-        if (memberContainer) {
-            memberContainer.innerHTML = await showMember();
-            bindMemberEvents(); // 再次綁定事件
-        }
-    });
-
-    // 編輯會員
-    document.querySelectorAll('.btn-edit').forEach(button => {
-        button.addEventListener('click', () => {
-            const memberId = button.getAttribute('data-id');
-            alert(`編輯功能尚未實現，會員 ID: ${memberId}`);
-        });
-    });
-
-    // 刪除會員
-    document.querySelectorAll('.btn-delete').forEach(button => {
-        button.addEventListener('click', () => {
-            const memberId = button.getAttribute('data-id');
-            alert(`刪除功能尚未實現，會員 ID: ${memberId}`);
-        });
-    });
-}
-
-export { showMember, bindMemberEvents };
+export { showMember };
