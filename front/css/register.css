@@ -7,7 +7,7 @@ body {
     height: 100vh;
     margin: 0;
 }
-.register-form {
+.container {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
@@ -15,12 +15,12 @@ body {
     width: 100%;
     max-width: 400px;
 }
-.register-form h2 {
+.container h2 {
     margin-bottom: 20px;
     font-size: 24px;
     color: #333333;
 }
-.register-form input {
+.container input {
     width: 100%;
     padding: 12px;
     margin: 8px 0;
@@ -28,7 +28,7 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
 }
-.register-form button {
+.container button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -38,6 +38,17 @@ body {
     font-size: 16px;
     cursor: pointer;
 }
-.register-form button:hover {
+.container button:hover {
     background-color: #0056b3;
+}
+
+.message {
+    background-color: #f8f9fa; /* 背景色 */
+    color: #004085;           /* 文字顏色 */
+    border: 1px solid #ced4da; /* 邊框 */
+    padding: 15px;            /* 內邊距 */
+    margin-top: 20px;         /* 與其他元素的間距 */
+    border-radius: 5px;       /* 圓角 */
+    font-size: 16px;          /* 字體大小 */
+    font-weight: bold;        /* 粗體 */
 }
