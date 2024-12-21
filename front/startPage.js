@@ -35,14 +35,7 @@ function startPage() {
         <div class="container">
             <p>© 2024 後台管理系統. 保留所有權利.</p>
         </div>
-    </footer>
-    <h1>飲料訂購資料庫</h1>
-    <button id="home">首頁</button>
-    <button id="product">產品</button>
-    <button id="order1">訂購</button>
-    <button id="member">會員</button>
-    <div id="crud"></div>
-    `;
+    </footer>`;
     
     return page;
 }

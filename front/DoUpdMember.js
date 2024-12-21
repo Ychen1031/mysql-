@@ -1,4 +1,4 @@
-function DoUpdMember(event) {
+function DoUpdMember(event, sel_table) {
     const target = event.target;
     const row = target.closest('tr');
     const cells = row.querySelectorAll('td');
@@ -17,10 +17,11 @@ function DoUpdMember(event) {
             name: document.getElementById('updName').value,
             phone: document.getElementById('updPhone').value,
             email: document.getElementById('updEmail').value,
-            password: document.getElementById('updPassword').value
+            password: document.getElementById('updPassword').value,
+            sel_table: sel_table
         };
 
-        axios.post('../server/index.php?action=member_DoUpdate', Qs.stringify(updatedData))
+        axios.post('../server/index.php?action=DoUpdate', Qs.stringify(updatedData))
             .then(res => {
                 const response = res.data;
                 if (response.status == 200 || response.status == 204) {

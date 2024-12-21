@@ -2,24 +2,26 @@
 
 require_once './DB.php';
 
-function product_DoInsert() {
-    $pId = $_POST['pId'];
-    $pName = $_POST['pName'];
-    $category = $_POST['category'];
-    $price = $_POST['price'];
-    $size = $_POST['size'];
+function DoInsert() {
+    $data = $_POST;
     
-    $response = DB();
-    $conn = $response['result'];
+    $sel_table = $_POST['sel_table'];
+    unset($data['sel_table']);
     
     try {
-        if (empty($pId) || empty($pName) || empty($category) || empty($price) || empty($size)) {
+        $response = DB();
+        $conn = $response['result'];
+        $emptyFields = array_filter($data, function($value) { return empty($value); });
+        if (!empty($emptyFields)) {
             $response['status'] = 400;
             $response['message'] = '所有欄位皆為必填';
         } else {
-            $sql = "INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES (?,?,?,?,?);";
+            $columns = implode(", ", array_keys($data));
+            $valuesArray = array_values($data); // 取得資料值
+            $placeholders = implode(", ", array_fill(0, count($data), "?"));
+            $sql = "INSERT INTO $sel_table ($columns) VALUES ($placeholders);";
             $stmt = $conn->prepare($sql);
-            $result = $stmt->execute([$pId, $pName, $category, $price, $size]);
+            $result = $stmt->execute($valuesArray);
             
             if ($result) {
             $response['status'] = 200;

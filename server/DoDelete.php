@@ -2,17 +2,22 @@
 
 require_once './DB.php';
 
-function product_DoDelete() {
+function DoDelete() {
     
+    $data = $_POST;
+    $sel_table = $_POST['sel_table'];
+    unset($data['sel_table']);
+
     $response = DB();
     if ($response['status'] == 200) {
         $conn = $response['result'];
-        if (isset($_POST['id'])) {
-            $id = $_POST['id'];
+
+        $key = array_key_first($data);
+        if ($key) {
             // 使用預備語句執行刪除操作
-            $sql = "DELETE FROM `product` WHERE pId=?";
+            $sql = "DELETE FROM $sel_table WHERE $key=?";
             $stmt = $conn->prepare($sql);
-            $result = $stmt->execute([$id]);
+            $result = $stmt->execute([$data[$key]]);
             
             if ($result) {
                 $response['status'] = 200;

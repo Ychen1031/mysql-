@@ -1,4 +1,4 @@
-function DoUpdProduct(event) {
+function DoUpdProduct(event, sel_table) {
     const target = event.target;
     const row = target.closest('tr');
     const cells = row.querySelectorAll('td');
@@ -23,10 +23,11 @@ function DoUpdProduct(event) {
             pName: document.getElementById('updName').value,
             category: document.getElementById('updCategory').value,
             price: document.getElementById('updPrice').value,
-            size: document.getElementById('updSize').value
+            size: document.getElementById('updSize').value,
+            sel_table: sel_table
         };
 
-        axios.post('../server/index.php?action=product_DoUpdate', Qs.stringify(updatedData))
+        axios.post('../server/index.php?action=DoUpdate', Qs.stringify(updatedData))
             .then(res => {
                 const response = res.data;
                 if (response.status == 200 || response.status == 204) {

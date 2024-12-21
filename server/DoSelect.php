@@ -2,17 +2,20 @@
 
 require_once './DB.php';
 
-function product_DoSelect() {
+function DoSelect() {
     $response = DB();
+
+    $sel_table = $_POST['sel_table'];
+
     if ($response['status'] == 200) {
         $conn = $response['result'];
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
-            $sql = "SELECT * FROM `product` WHERE id=?";
+            $sql = "SELECT * FROM $sel_table WHERE id=?";
             $stmt = $conn -> prepare($sql);
             $result = $stmt -> execute([$id]);
         } else {
-            $sql = "SELECT * FROM `product`";
+            $sql = "SELECT * FROM $sel_table";
             $stmt = $conn -> prepare($sql);
             $result = $stmt -> execute();
         }

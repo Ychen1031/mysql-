@@ -23,7 +23,8 @@ window.onload = () => {
 
     // 產品查詢
     document.getElementById('sel_product').onclick = async () => {
-        document.getElementById('content').innerHTML = await showProduct();
+        const sel_table = document.getElementById('sel_product').id.replace('sel_', '');
+        document.getElementById('content').innerHTML = await showProduct(sel_table);
 
         // 重新整理
         document.getElementById('refresh_product').onclick = async () => {
@@ -35,7 +36,7 @@ window.onload = () => {
             document.getElementById('content').innerHTML = await addProductPage();
 
             document.getElementById('add').onclick = () => {
-                DoAddProduct();
+                DoAddProduct(sel_table);
             };
 
             document.getElementById('re').onclick = () => {
@@ -46,21 +47,23 @@ window.onload = () => {
         // 刪除產品
         document.querySelectorAll('#del_product').forEach(button => {
             button.onclick = (event) => {
-                DoDelProduct(event);
+                DoDelProduct(event, sel_table);
             };
         });
 
         // 更新產品
         document.querySelectorAll('#upd_product').forEach(button => {
             button.onclick = (event) => {
-                DoUpdProduct(event);
+                DoUpdProduct(event, sel_table);
             };
         });
     };
 
     // 會員頁面
     document.getElementById('sel_member').onclick = async () => {
-        document.getElementById('content').innerHTML = await showMember();
+        const sel_table = document.getElementById('sel_member').id.replace('sel_', '');
+       
+        document.getElementById('content').innerHTML = await showMember(sel_table);
 
         // 重新整理
         document.getElementById('refresh_member').onclick = async () => {
@@ -72,7 +75,7 @@ window.onload = () => {
             document.getElementById('content').innerHTML = await addMemberPage();
 
             document.getElementById('addMember').onclick = () => {
-                DoAddMember();
+                DoAddMember(sel_table);
             };
 
             document.getElementById('re').onclick = () => {
@@ -83,14 +86,14 @@ window.onload = () => {
         // 刪除會員
         document.querySelectorAll('#del_member').forEach(button => {
             button.onclick = (event) => {
-                DoDelMember(event);
+                DoDelMember(event, sel_table);
             };
         });
 
         // 更新會員
         document.querySelectorAll('#upd_member').forEach(button => {
             button.onclick = (event) => {
-                DoUpdMember(event);
+                DoUpdMember(event, sel_table);
             };
         });
     };
