@@ -11,7 +11,7 @@ function DoAddMember(sel_table) {
         'sel_table': sel_table
     };
    
-    axios.post('../server/index.php?action=DoInsert', Qs.stringify(data))
+    axios.post('../../server/index.php?action=DoInsert', Qs.stringify(data))
         .then(res => {
             const response = res['data'];
             document.getElementById('content').innerHTML = `<div class="message">編號${mId} ${response['message']}</div>`;

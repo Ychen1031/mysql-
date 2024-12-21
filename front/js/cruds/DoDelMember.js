@@ -8,7 +8,7 @@ function DoDelMember(event, sel_table) {
         "mId": mId,
         "sel_table": sel_table
     }
-    axios.post('../server/index.php?action=DoDelete', Qs.stringify(data))
+    axios.post('../../server/index.php?action=DoDelete', Qs.stringify(data))
     .then(res => {
         const response = res['data'];
         document.getElementById('content').innerHTML = `<div class="message">編號${mId} ${response['message']}</div>`;

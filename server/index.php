@@ -34,3 +34,4 @@ switch ($action) {
 }
 
 echo json_encode($response);
+

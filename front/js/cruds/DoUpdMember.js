@@ -21,7 +21,7 @@ function DoUpdMember(event, sel_table) {
             sel_table: sel_table
         };
 
-        axios.post('../server/index.php?action=DoUpdate', Qs.stringify(updatedData))
+        axios.post('../../server/index.php?action=DoUpdate', Qs.stringify(updatedData))
             .then(res => {
                 const response = res.data;
                 if (response.status == 200 || response.status == 204) {

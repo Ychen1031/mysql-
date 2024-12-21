@@ -5,7 +5,7 @@ async function showMember(sel_table) {
         };
 
         // 發送 API 請求獲取會員資料
-        return axios.post("../server/index.php?action=DoSelect", Qs.stringify(data))
+        return axios.post("../../server/index.php?action=DoSelect", Qs.stringify(data))
         .then(res => {
             const response = res['data'];
             let str = "<h2>資料庫管理 - Member 資料表</h2>";

@@ -3,12 +3,12 @@ import { showProduct } from "./showProduct.js";
 import { startPage } from "./startPage.js";
 import { showMember } from "./showMember.js";
 import { addMemberPage } from "./addMemberPage.js";
-import { DoAddProduct } from "./doAddProduct.js";
-import { DoUpdProduct } from "./DoUpdProduct.js";
-import { DoDelProduct } from "./DoDelProduct.js";
-import { DoAddMember } from "./DoAddMember.js";
-import { DoDelMember } from "./DoDelMember.js";
-import { DoUpdMember } from "./DoUpdMember.js";
+import { DoAddProduct } from "../cruds/DoAddProduct.js";
+import { DoUpdProduct } from "../cruds/DoUpdProduct.js";
+import { DoDelProduct } from "../cruds/DoDelProduct.js";
+import { DoAddMember } from "../cruds/DoAddMember.js";
+import { DoDelMember } from "../cruds/DoDelMember.js";
+import { DoUpdMember } from "../cruds/DoUpdMember.js";
 
 window.onload = () => {
     document.getElementById('root').innerHTML = startPage();

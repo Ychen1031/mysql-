@@ -18,6 +18,7 @@ function startPage() {
                 </li>
                 <li><a href="#" id='sel_member'>會員管理</a></li>
                 <li><a href="#">系統設定</a></li>
+                <li><a href="./index.html" id='logout'>登出</a></li>
             </ul>
         </nav>
         </div>
