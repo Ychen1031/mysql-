@@ -26,6 +26,11 @@ switch ($action) {
         require_once './DoUpdate.php';
         $response = DoUpdate();
         break;
+    
+    case 'login':
+        require_once './login.php';
+        $response = login();
+        break;
         
     default:
         $response['status'] = 404;
