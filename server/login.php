@@ -18,7 +18,7 @@ function login() {
         if ($stmt->rowCount() > 0) {
             // Login successful
             $response['status'] = 200;
-            $response['message'] = '有此帳號';
+            $response['message'] = '有此帳號'; 
         } else {
             $response['status'] = 500;
             $response['message'] = "帳號或密碼有誤";
