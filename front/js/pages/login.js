@@ -9,7 +9,7 @@ window.onload = () => {
 
         if (mId === 'admin' && password === '123') {
             window.location.href = 'backstage.html';
-            return false; // Prevent form submission
+            
         } else {
             let data = {
                 "mId": mId,
