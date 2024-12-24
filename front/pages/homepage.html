@@ -3,115 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="../js/pages/homePage.js"></script>
+    <script type="module" src="../js/pages/Frontstage.js"></script>
+    <script src="../libs/axios.min.js"></script>
+    <script src="../libs/qs.min.js"></script>
     <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Welcome to Our Beverage Store</h1>
-            <p>Discover the best drinks to refresh your day!</p>
-        </header>
-        <section class="products">
-            <div class="product">
-                <img src="../images/drink1.jpg" alt="Drink 1">
-                <h2>Refreshing Lemonade</h2>
-                <p>A perfect blend of lemons and sweetness.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink2.jpg" alt="Drink 2">
-                <h2>Classic Iced Tea</h2>
-                <p>Cool and invigorating iced tea.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink3.jpg" alt="Drink 3">
-                <h2>Berry Smoothie</h2>
-                <p>A delicious mix of berries and yogurt.</p>
-                <button>Order Now</button>
-            </div>
-        </section>
-        <section class="products">
-            <div class="product">
-                <img src="../images/drink1.jpg" alt="Drink 1">
-                <h2>Refreshing Lemonade</h2>
-                <p>A perfect blend of lemons and sweetness.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink2.jpg" alt="Drink 2">
-                <h2>Classic Iced Tea</h2>
-                <p>Cool and invigorating iced tea.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink3.jpg" alt="Drink 3">
-                <h2>Berry Smoothie</h2>
-                <p>A delicious mix of berries and yogurt.</p>
-                <button>Order Now</button>
-            </div>
-        </section>
-        <section class="products">
-            <div class="product">
-                <img src="../images/drink1.jpg" alt="Drink 1">
-                <h2>Refreshing Lemonade</h2>
-                <p>A perfect blend of lemons and sweetness.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink2.jpg" alt="Drink 2">
-                <h2>Classic Iced Tea</h2>
-                <p>Cool and invigorating iced tea.</p>
-                <button>Order Now</button>
-            </div>
-            <div class="product">
-                <img src="../images/drink3.jpg" alt="Drink 3">
-                <h2>Berry Smoothie</h2>
-                <p>A delicious mix of berries and yogurt.</p>
-                <button>Order Now</button>
-            </div>
-        </section>
-    </div>
     <style>
-        .container {
-            text-align: center;
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        #root {
+            display: flex;
+            width: 100%;
+        }
+        .admin-header {
+            width: 20%;
+            background-color: #f4f4f4;
             padding: 20px;
+            box-sizing: border-box;
         }
-        header {
-            margin-bottom: 20px;
+        .container {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
         }
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+        .nav-links .dropdown-menu {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* 主內容區的CSS */
         .products {
             display: flex;
-            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .product {
             border: 1px solid #ccc;
-            padding: 10px;
-            width: 30%;
-        }
-        .product img {
-            width: 100%;
-            height: auto;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(33.333% - 20px);
+            background-color: #fff;
         }
         .product h2 {
-            font-size: 1.5em;
-            margin: 10px 0;
+            margin-top: 0;
         }
-        .product p {
-            font-size: 1em;
-            margin: 10px 0;
-        }
-        .product button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-        .product button:hover {
-            background-color: #45a049;
+        .product select, .product button {
+            display: block;
+            margin-top: 10px;
         }
     </style>
+</head>
+<body>
+    <div id="root"></div>
 </body>
 </html>

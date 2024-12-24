@@ -32,6 +32,11 @@ switch ($action) {
         $response = login();
         break;
         
+    case 'save_order':
+        require_once './save_order.php';
+        $response = save_order();
+        break;
+        
     default:
         $response['status'] = 404;
         $response['message'] = 'action not found';
@@ -39,4 +44,3 @@ switch ($action) {
 }
 
 echo json_encode($response);
-
