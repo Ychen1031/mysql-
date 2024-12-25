@@ -7,6 +7,8 @@ async function showOrder(sel_table) {
         return axios.post("../../server/index.php?action=DoSelect", Qs.stringify(data))
         .then(res => {
             const response = res['data'];
+            console.log(response);
+            
             let str = `<h2>資料庫管理 - Order 資料表</h2>
             <!-- 操作按鈕 -->
             <p><div class="action-buttons">
@@ -23,9 +25,7 @@ async function showOrder(sel_table) {
                                 <th>訂單ID</th>
                                 <th>客戶名稱</th>
                                 <th>訂購數量</th>
-                                <th>總金額</th>
                                 <th>訂單時間</th>
-                                <th>付款方式</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
@@ -33,12 +33,10 @@ async function showOrder(sel_table) {
                     rows.forEach(element => {
                         str += `
                             <tr>
+                                <td>${element.mId}</td>
                                 <td>${element.oId}</td>
-                                <td>${element.name}</td>
                                 <td>${element.quantity}</td>
-                                <td>${element.totalPrice}</td>
                                 <td>${element.orderTime}</td>
-                                <td>${element.paymentMethod}</td>
                                 <td>
                                     <button class="btn btn-edit" id='upd_order'>編輯</button>
                                     <button class="btn btn-delete" id='del_order'>刪除</button>

@@ -12,7 +12,7 @@ function startPage() {
                     <!-- 下拉式選單 -->
                     <ul class="dropdown-menu">
                         <li><a href="#" id='sel_product'>產品管理</a></li>
-                        <li><a href="#" id='sel_order'>訂單管理</a></li>
+                        <li><a href="#" id='sel_order1'>訂單管理</a></li>
                         <li><a href="#">庫存管理</a></li>
                     </ul>
                 </li>

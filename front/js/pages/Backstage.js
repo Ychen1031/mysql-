@@ -100,10 +100,40 @@ window.onload = () => {
     };
 
     // 訂單頁面
-    document.getElementById('sel_order').onclick = async () => {
-        const sel_table = document.getElementById('sel_order').id.replace('sel_', '');
+    document.getElementById('sel_order1').onclick = async () => {
+        const sel_table = document.getElementById('sel_order1').id.replace('sel_', '');
         document.getElementById('content').innerHTML = await showOrder(sel_table);
 
-        
+        // 重新整理
+        document.getElementById('refresh_order').onclick = async () => {
+            await document.getElementById('sel_order1').onclick();
+        };
+
+        // 新增訂單
+        document.getElementById('add_order').onclick = async () => {
+            document.getElementById('content').innerHTML = await addOrderPage();
+
+            document.getElementById('addOrder').onclick = () => {
+                DoAddOrder(sel_table);
+            };
+
+            document.getElementById('re').onclick = () => {
+                resetForm(); // 只清空輸入欄資料
+            };
+        };
+
+        // 刪除訂單
+        document.querySelectorAll('#del_order').forEach(button => {
+            button.onclick = (event) => {
+                DoDelOrder(event, sel_table);
+            };
+        });
+
+        // 更新訂單
+        document.querySelectorAll('#upd_order').forEach(button => {
+            button.onclick = (event) => {
+                DoUpdOrder(event, sel_table);
+            };
+        });
     };
 };
