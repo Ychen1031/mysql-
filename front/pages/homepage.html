@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="../js/pages/Frontstage.js"></script>
+    <script src="../libs/axios.min.js"></script>
+    <script src="../libs/qs.min.js"></script>
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        #root {
+            display: flex;
+            width: 100%;
+        }
+        .admin-header {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 80%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .nav-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+        .nav-links .dropdown-menu {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+        }
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        /* 主內容區的CSS */
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(33.333% - 20px);
+            background-color: #fff;
+        }
+        .product h2 {
+            margin-top: 0;
+        }
+        .product select, .product button {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>

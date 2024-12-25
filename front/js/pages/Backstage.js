@@ -9,6 +9,8 @@ import { DoDelProduct } from "../cruds/DoDelProduct.js";
 import { DoAddMember } from "../cruds/DoAddMember.js";
 import { DoDelMember } from "../cruds/DoDelMember.js";
 import { DoUpdMember } from "../cruds/DoUpdMember.js";
+import { addOrderPage } from "./addOrderPage.js";
+import { showOrder } from "./showOrder.js";
 
 window.onload = () => {
     document.getElementById('root').innerHTML = startPage();
@@ -62,7 +64,6 @@ window.onload = () => {
     // 會員頁面
     document.getElementById('sel_member').onclick = async () => {
         const sel_table = document.getElementById('sel_member').id.replace('sel_', '');
-       
         document.getElementById('content').innerHTML = await showMember(sel_table);
 
         // 重新整理
@@ -96,5 +97,13 @@ window.onload = () => {
                 DoUpdMember(event, sel_table);
             };
         });
+    };
+
+    // 訂單頁面
+    document.getElementById('sel_order').onclick = async () => {
+        const sel_table = document.getElementById('sel_order').id.replace('sel_', '');
+        document.getElementById('content').innerHTML = await showOrder(sel_table);
+
+        
     };
 };
