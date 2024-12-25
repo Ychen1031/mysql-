@@ -29,18 +29,12 @@ window.onload = () => {
 
                 // 根據後端返回的狀態來處理
                 if (response.status === 200) {
-<<<<<<< HEAD
-                    // 登入成功，跳轉到 backstage.html
-                    sessionStorage.setItem("mId", mId);
-                    window.location.href = 'backstage.html';
-=======
                     if (response['message'] === 'admin') {
                         window.location.href = 'backstage.html';
                     } else { 
                         sessionStorage.setItem("mId", mId);
                         window.location.href = 'homepage.html';
                     }
->>>>>>> 89e3189d721960ddbbc115850bc3702e1f8fb8a0
                 } else {
                     // 顯示錯誤訊息
                     document.getElementById('msg').innerHTML = response.message;
