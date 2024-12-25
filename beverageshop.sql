@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-12-18 04:20:55
+-- 產生時間： 2024-12-25 04:02:12
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `contain` (
-  `pId` char(3) NOT NULL,
+  `pId` varchar(10) NOT NULL,
   `oId` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -51,7 +51,8 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`mId`, `name`, `phone`, `email`, `password`) VALUES
-('C112156205', '陳小明', '0912345678', 'c112156205@nkust.edu.tw', '123');
+('1231', '123', '123', '123132', '23324'),
+('yuzhang', 'yy', '0930057193', 'aa@nkust.edu.tw', '123');
 
 -- --------------------------------------------------------
 
@@ -60,9 +61,10 @@ INSERT INTO `member` (`mId`, `name`, `phone`, `email`, `password`) VALUES
 --
 
 CREATE TABLE `order1` (
+  `mId` varchar(10) NOT NULL,
   `oId` varchar(10) NOT NULL,
-  `totalPrice` int(11) NOT NULL,
-  `mId` varchar(10) DEFAULT NULL
+  `quantity` int(11) NOT NULL,
+  `orderTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -72,7 +74,7 @@ CREATE TABLE `order1` (
 --
 
 CREATE TABLE `product` (
-  `pId` char(3) NOT NULL,
+  `pId` varchar(10) NOT NULL,
   `pName` varchar(10) NOT NULL,
   `category` varchar(10) NOT NULL,
   `price` int(11) NOT NULL,
@@ -84,9 +86,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES
-('001', '奶茶', '茶類', 30, '特大'),
-('002', '紅茶', '茶類', 20, '小'),
-('003', '紅茶', '茶類', 35, '中');
+('珍珠奶茶', 'yy', '0909', 102, '中');
 
 --
 -- 已傾印資料表的索引
@@ -126,8 +126,8 @@ ALTER TABLE `product`
 -- 資料表的限制式 `contain`
 --
 ALTER TABLE `contain`
-  ADD CONSTRAINT `contain_ibfk_1` FOREIGN KEY (`pId`) REFERENCES `product` (`pId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `contain_ibfk_2` FOREIGN KEY (`oId`) REFERENCES `order1` (`oId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `contain_ibfk_2` FOREIGN KEY (`oId`) REFERENCES `order1` (`oId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `contain_ibfk_3` FOREIGN KEY (`pId`) REFERENCES `product` (`pId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `order1`
