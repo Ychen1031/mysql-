@@ -7,7 +7,6 @@ window.onload = () => {
         const mId = document.getElementById('mId').value;
         const password = document.getElementById('password').value;
 
-<<<<<<< HEAD
         // 確保 mId 和 password 都不為空
         if (mId === "" || password === "") {
             document.getElementById('msg').innerHTML = "請輸入會員ID和密碼。";
@@ -19,26 +18,6 @@ window.onload = () => {
             "password": password
         };
 
-=======
-        if (mId === 'admin' && password === '123') {
-            window.location.href = 'backstage.html';
-            
-        } else {
-            let data = {
-                "mId": mId,
-                "password": password
-            };
-
-            axios.post('../../server/index.php?action=login', Qs.stringify(data))
-                .then(res => {
-                    const response = res['data'];
-                    document.getElementById('msg').innerHTML = response['message'];
-                })
-                .catch(err => {
-                    console.error(err);
-                });
-        }
->>>>>>> 195131f3ac30d8fd29381957a6f1ed22843241e2
         // 禁用登入按鈕，防止多次提交
         const loginButton = document.getElementById('login');
         loginButton.disabled = true;
@@ -50,18 +29,12 @@ window.onload = () => {
 
                 // 根據後端返回的狀態來處理
                 if (response.status === 200) {
-<<<<<<< HEAD
-                    // 登入成功，跳轉到 backstage.html
-                    sessionStorage.setItem("mId", mId);
-                    window.location.href = 'backstage.html';
-=======
-                    if (response['message'] == 'admin') {
+                    if (response['message'] === 'admin') {
                         window.location.href = 'backstage.html';
-                    } else {
-                        window.location.href = `homepage.html?mId=${mId}`;
+                    } else { 
+                        sessionStorage.setItem("mId", mId);
+                        window.location.href = 'homepage.html';
                     }
-
->>>>>>> 195131f3ac30d8fd29381957a6f1ed22843241e2
                 } else {
                     // 顯示錯誤訊息
                     document.getElementById('msg').innerHTML = response.message;
