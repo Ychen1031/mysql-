@@ -32,7 +32,7 @@ window.onload = () => {
                     if (response['message'] === 'admin') {
                         window.location.href = 'backstage.html';
                     } else { 
-                        sessionStorage.setItem("mId", mId);
+                        localStorage.setItem("mId", mId); // 使用 localStorage 記住 mId
                         window.location.href = 'homepage.html';
                     }
                 } else {

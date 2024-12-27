@@ -9,10 +9,12 @@ window.onload = () => {
 
     // 將頁面內容插入到 root 元素中
     document.getElementById('root').innerHTML = page;
-
+    console.log(localStorage.getItem("mId"));
     // 添加按鈕點擊事件監聽器
     if (condition === 'start') {
-        document.getElementById('order').addEventListener('click', () => {
+        const orderButtons = document.getElementsByName('order');
+        orderButtons.forEach(button => {
+            button.addEventListener('click', () => {
             const teaType = document.getElementById('紅茶').innerText;
             const teaSize = document.getElementById('size').value;
             console.log(`Tea Type: ${teaType}, Tea Size: ${teaSize}`);
@@ -52,6 +54,7 @@ window.onload = () => {
                     .catch(error => {
                         console.error('Error saving data:', error);
                     });
+            });
             });
         });
     }
