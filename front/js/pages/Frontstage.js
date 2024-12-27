@@ -21,19 +21,37 @@ window.onload = () => {
             // 在更新 DOM 之後添加事件監聽器
             document.getElementById('confirm').addEventListener('click', () => {
                 console.log('Order confirmed');
-                alert('訂單已確認！');
-                axios.post('../../server/index.php?action=save_order', Qs.stringify({
-                    oid: '001', // replace with actual oid
-                    mid: '001', // replace with actual mid
-                    pid: '001', // replace with actual pid
-                    quantity: '5' // replace with actual quantity
-                }))
-                .then(response => {
-                    console.log('Data saved successfully:', response.data);
-                })
-                .catch(error => {
-                    console.error('Error saving data:', error);
-                });
+                let orderId = '004'; // replace with actual oid
+                let memberId = 'yuzhang'; // replace with actual mid from member table
+                let productId = '珍珠奶茶'; // replace with actual pid from product table
+            
+                let orderData = { 
+                    mid: memberId,
+                    oid: orderId,
+                    quantity: '5', // replace with actual quantity
+                    orderTime: new Date().toISOString().split('T')[0], // 使用當前日期
+                    sel_table: 'order1'
+                };
+                
+                axios.post('../../server/index.php?action=DoInsert', Qs.stringify(orderData))
+                    .then(response => {
+                        console.log('Data saved successfully:', response.data);
+                        alert('訂單已確認！');
+            
+                        let containData = { 
+                            pid: productId,
+                            oid: orderId,
+                            sel_table: 'contain'
+                        };
+                        return axios.post('../../server/index.php?action=DoInsert', Qs.stringify(containData));
+                    })
+                    .then(response => {
+                        console.log('Data saved successfully:', response.data);
+                        alert('訂單已確認！');
+                    })
+                    .catch(error => {
+                        console.error('Error saving data:', error);
+                    });
             });
         });
     }
