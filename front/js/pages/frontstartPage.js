@@ -1,4 +1,4 @@
-function frontstartPage(condition, data) {
+async function frontstartPage(condition, data) {
     let mId = localStorage.getItem("mId")
     const renderHeader = () => `
         <!-- 功能區 -->
@@ -19,21 +19,17 @@ function frontstartPage(condition, data) {
     let Data = {
         sel_table: 'product'
     };
-    
+    // select all products
     axios.post('../../server/index.php?action=DoSelect', Qs.stringify(Data))
     .then(response => {
-        console.log('Data fetched successfully:', response.data);
-
         // 確認 `result` 是否存在，且為陣列
         let rawData = Array.isArray(response.data.result) ? response.data.result : [];
         if (rawData.length === 0) {
             console.warn('No products found in the response.');
         }
-
+        
         // 將資料整合
         let groupedProducts = groupByProductName(rawData);
-
-        console.log('Processed Products:', groupedProducts);
 
         renderProducts(groupedProducts); // 傳入處理後的產品資料進行渲染
     })
@@ -49,7 +45,6 @@ function frontstartPage(condition, data) {
             // 如果該產品名稱尚未在分組中，初始化為空物件
             if (!grouped[item.pName]) {
                 grouped[item.pName] = {
-                    pId: item.pId, // 可以保留第一筆的 pId 作為基準
                     pName: item.pName,
                     category: item.category,
                     sizes: [] // 用於儲存尺寸與價格
@@ -59,7 +54,8 @@ function frontstartPage(condition, data) {
             // 將尺寸與價格加入對應的產品中
             grouped[item.pName].sizes.push({
                 name: item.size,
-                price: item.price
+                price: item.price,
+                pId: item.pId
             });
         });
 
@@ -76,15 +72,15 @@ function frontstartPage(condition, data) {
 
         let productHtml = products.map(product => `
             <div class="product">
-                <div>
-                    <h2 id="${product.pId}">${product.pName}</h2>
-                    尺寸
-                    <select id="size-${product.pId}">
-                        ${product.sizes.map(size => `<option value="${size.price}">${size.name}</option>`).join('')}
-                    </select>
-                </div>
-                <button class="btn btn-order">下定</button>
-                <button class="btn btn-edit">編輯</button>
+            <div>
+                <h2 id="${product.pId}">${product.pName}</h2>
+                尺寸
+                <select id="size-${product.pId}">
+                ${product.sizes.map(size => `<option class='pId' id='${size.pId}' value="${size.pId}">${size.name}</option>`).join('')}
+                </select>
+                <input type="number" id="quantity-${product.pId}" value="1" min="1" max="10">
+            </div>
+            <button class="btn btn-order" id='add_order'>下訂</button>
             </div>
         `).join('');
 
@@ -92,7 +88,6 @@ function frontstartPage(condition, data) {
         document.querySelector('.products').innerHTML = productHtml;
     };
 
-    
     const renderStartPage = () => `
         ${renderHeader()}
         <!-- 主內容區 -->
@@ -121,16 +116,6 @@ function frontstartPage(condition, data) {
             </div>
         </main>
     `;
-
-    const calculateTotal = (size) => {
-        const priceMap = {
-            "特大": 70,
-            "大": 60,
-            "中": 50,
-            "小": 40,
-        };
-        return priceMap[size] || 0;
-    };
 
     let page = '';
     if (condition === 'start') {
