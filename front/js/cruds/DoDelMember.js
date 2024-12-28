@@ -4,6 +4,10 @@ function DoDelMember(event, sel_table) {
     const firstCell = row.querySelector('td:first-child');
     const mId = firstCell.textContent; // 產品ID
     
+    if (!confirm(`確定要刪除訂單編號 ${mId} 嗎？`)) {
+        return; // 如果用戶取消操作，直接返回
+    }
+    
     let data = {
         "mId": mId,
         "sel_table": sel_table

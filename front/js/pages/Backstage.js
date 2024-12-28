@@ -11,6 +11,9 @@ import { DoDelMember } from "../cruds/DoDelMember.js";
 import { DoUpdMember } from "../cruds/DoUpdMember.js";
 import { addOrderPage } from "./addOrderPage.js";
 import { showOrder } from "./showOrder.js";
+import { DoDelOrder } from "../cruds/DoDelOrder.js";
+import { DoUpdOrder } from "../cruds/DoUpdOrder.js";
+import { DoAddOrder } from "../cruds/DoAddOrder.js";
 
 window.onload = () => {
     document.getElementById('root').innerHTML = startPage();
