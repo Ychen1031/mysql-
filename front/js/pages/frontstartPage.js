@@ -83,7 +83,8 @@ function frontstartPage(condition, data) {
                         ${product.sizes.map(size => `<option value="${size.price}">${size.name}</option>`).join('')}
                     </select>
                 </div>
-                <button name="order" data-id="${product.pId}">下定</button>
+                <button class="btn btn-order">下定</button>
+                <button class="btn btn-edit">編輯</button>
             </div>
         `).join('');
 
