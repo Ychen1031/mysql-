@@ -3,7 +3,7 @@ async function DoSelectOrder1(data) {
         const response = await axios.post('../../server/index.php?action=DoSelect', Qs.stringify(data));
         const orders = response.data.result;
         let maxOid = 0;
-
+        
         // 找到最大的 oid
         orders.forEach(order => {
             const oid = parseInt(order.oId, 10);
