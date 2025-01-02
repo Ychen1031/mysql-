@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-12-25 04:02:12
+-- 產生時間： 2025-01-02 09:34:22
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -32,6 +32,20 @@ CREATE TABLE `contain` (
   `oId` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- 傾印資料表的資料 `contain`
+--
+
+INSERT INTO `contain` (`pId`, `oId`) VALUES
+('001', '001'),
+('001', '002'),
+('001', '003'),
+('001', '004'),
+('001', '005'),
+('001', '006'),
+('001', '007'),
+('001', '008');
+
 -- --------------------------------------------------------
 
 --
@@ -52,6 +66,7 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`mId`, `name`, `phone`, `email`, `password`) VALUES
 ('1231', '123', '123', '123132', '23324'),
+('wushuyi', 'wushuyi', '123456789', '111.gmail.com', '123'),
 ('yuzhang', 'yy', '0930057193', 'aa@nkust.edu.tw', '123');
 
 -- --------------------------------------------------------
@@ -66,6 +81,20 @@ CREATE TABLE `order1` (
   `quantity` int(11) NOT NULL,
   `orderTime` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- 傾印資料表的資料 `order1`
+--
+
+INSERT INTO `order1` (`mId`, `oId`, `quantity`, `orderTime`) VALUES
+('yuzhang', '001', 5, '2024-12-30'),
+('yuzhang', '002', 4, '2024-12-30'),
+('yuzhang', '003', 4, '2024-12-30'),
+('yuzhang', '004', 1, '2024-12-30'),
+('wushuyi', '005', 1, '2024-12-30'),
+('wushuyi', '006', 1, '2024-12-30'),
+('wushuyi', '007', 1, '2024-12-31'),
+('wushuyi', '008', 5, '2024-12-31');
 
 -- --------------------------------------------------------
 
@@ -86,7 +115,12 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES
-('珍珠奶茶', 'yy', '0909', 102, '中');
+('001', '紅茶', '茶類', 50, '小'),
+('002', '紅茶', '茶類', 60, '中'),
+('003', '紅茶', '茶類', 70, '大'),
+('004', '紅茶', '茶類', 80, '特大'),
+('005', '奶茶', '茶類', 60, '小'),
+('006', '奶茶', '茶類', 70, '中');
 
 --
 -- 已傾印資料表的索引
@@ -96,8 +130,8 @@ INSERT INTO `product` (`pId`, `pName`, `category`, `price`, `size`) VALUES
 -- 資料表索引 `contain`
 --
 ALTER TABLE `contain`
-  ADD UNIQUE KEY `pId` (`pId`),
-  ADD UNIQUE KEY `oId` (`oId`);
+  ADD UNIQUE KEY `oId` (`oId`),
+  ADD KEY `pId` (`pId`);
 
 --
 -- 資料表索引 `member`
