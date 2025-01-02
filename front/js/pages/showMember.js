@@ -22,7 +22,7 @@ async function showMember(sel_table) {
                             <button class="btn btn-refresh" id="refresh_member">重新整理</button>
                         </div>
                         <thead>
-                            <tr>
+                            <tr>    
                                 <th>會員ID</th>
                                 <th>會員姓名</th>
                                 <th>電話</th>

@@ -13,10 +13,10 @@ function startPage() {
                     <ul class="dropdown-menu">
                         <li><a href="#" id='sel_product'>產品管理</a></li>
                         <li><a href="#" id='sel_order1'>訂單管理</a></li>
-                        <li><a href="#">庫存管理</a></li>
+                        <li><a href="#" id='sel_member'>會員管理</a></li>
                     </ul>
                 </li>
-                <li><a href="#" id='sel_member'>會員管理</a></li>
+                
                 <li><a href="#">系統設定</a></li>
                 <li><a href="./index.html" id='logout'>登出</a></li>
             </ul>

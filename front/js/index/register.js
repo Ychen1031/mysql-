@@ -1,4 +1,4 @@
-import { registerPage } from "./registerPage.js"
+import { registerPage } from "../pages/registerPage.js"
 
 window.onload = () => {
     document.getElementById('root').innerHTML = registerPage();

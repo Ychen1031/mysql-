@@ -1,4 +1,4 @@
-import { DoSelectProduct } from "../cruds/DoSelectProduct.js";
+import { DoSelectProduct } from "../cruds/DoSelProduct.js";
 
 async function frontstartPage(condition) {
     let mId = localStorage.getItem("mId");
@@ -86,6 +86,8 @@ async function frontstartPage(condition) {
             <tr>
                 <td>${order.orderTime}</td>
                 <td>${order.pName}</td>
+                <td>${order.price}</td>
+                <td>${order.quantity}</td>
                 <td>${order.totoalPrice}</td>
             </tr>
         `).join('');
@@ -95,6 +97,8 @@ async function frontstartPage(condition) {
                 <tr>
                     <td>時間</td>
                     <td>產品</td>
+                    <td>價格</td>
+                    <td>數量</td>
                     <td>總價</td>
                 </tr>
                 ${orderRows}

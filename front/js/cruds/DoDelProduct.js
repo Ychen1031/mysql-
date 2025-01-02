@@ -12,6 +12,7 @@ function DoDelProduct(event, sel_table) {
         "pId": pId,
         "sel_table": sel_table
     }
+    
     axios.post('../../server/index.php?action=DoDelete', Qs.stringify(data))
     .then(res => {
         const response = res['data'];
