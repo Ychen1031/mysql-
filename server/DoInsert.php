@@ -24,11 +24,11 @@ function DoInsert() {
             $result = $stmt->execute($valuesArray);
             
             if ($result) {
-            $response['status'] = 200;
-            $response['message'] = '新增成功';
+                $response['status'] = 200;
+                $response['message'] = '新增成功';
             } else {
-            $response['status'] = 404;
-            $response['message'] = '新增失敗';
+                $response['status'] = 404;
+                $response['message'] = '新增失敗';
             }
         }
     } catch (PDOException $e) {

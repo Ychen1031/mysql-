@@ -20,16 +20,14 @@ function DoSelect() {
     if ($response['status'] == 200) {
         $conn = $response['result'];
         if ($sel_table == "order1") {
-            $sql = "SELECT  orderTime, product.pName, price, quantity, price * quantity as totoalPrice
+            $sql = "SELECT order1.oId, order1.mId, orderTime, product.pName, price, quantity, price * quantity as totoalPrice
                     FROM order1
                     JOIN contain on order1.oId = contain.oId
                     JOIN product on contain.pId = product.pId";
 
             if (isset($mId)) {
-                $sql .= `WHERE order1.mId = $mId`;
+                $sql .= " WHERE order1.mId = '$mId'";
             }
-            $sql .= `;`;
-            
         } else {
             $sql = "SELECT * FROM $sel_table";
         }

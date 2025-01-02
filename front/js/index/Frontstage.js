@@ -51,38 +51,37 @@ window.onload = async () => {
                 oId: oid,
                 sel_table: 'contain',
             };
-
+            
             // 在這裡處理 orderData，例如發送到伺服器
             console.log(orderData);
-            console.log(containData);
+            
             axios.post('../../server/index.php?action=DoInsert', Qs.stringify(orderData))
-                .then(response => {
-                    console.log(response.data.message);
-                    if (response.data.message === '新增成功') {
-                        axios.post('../../server/index.php?action=DoInsert', Qs.stringify(containData))
-                            .then(response => {
-                                if (response.data.message === '新增成功' || response.data.message === '更新成功') {
-                                    alert('訂單已確認！');
-                                } else {
-                                    alert('訂單確認失敗，請稍後再試。');
-                                    console.log(response.data.message);
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Error saving data:', error);
-                    alert('訂單確認失敗，請稍後再試123。');
-                });
-                    } else {
-                        alert('訂單確認失敗，請稍後再試1。');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error saving data:', error);
-                    alert('訂單確認失敗，請稍後再試。');
-                });
+            .then(response => {
+                if (response.data.message === '新增成功') {
+                    axios.post('../../server/index.php?action=DoInsert', Qs.stringify(containData))
+                    .then(response => {
+                        if (response.data.message === '新增成功' || response.data.message === '更新成功') {
+                            alert('訂單已確認！');
+                        } else {
+                            alert('訂單確認失敗，請稍後再試。');
+                            console.log(response.data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error saving data:', error);
+                alert('訂單確認失敗，請稍後再試123。');
+            });
+                } else {
+                    alert('訂單確認失敗，請稍後再試1。');
+                }
+            })
+            .catch(error => {
+                console.error('Error saving data:', error);
+                alert('訂單確認失敗，請稍後再試。');
+            });
             
         } else if (event.target.classList.contains('btn-delete')) {
-            console.log('刪除按钮点击');
+            console.log('刪除按钮點擊');
         }
     });
 };

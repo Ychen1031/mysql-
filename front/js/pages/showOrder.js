@@ -32,8 +32,6 @@ async function showOrder(sel_table) {
                     </thead>
                     <tbody>`;
                 rows.forEach(element => {
-                    console.log(element);
-                    
                     str += `
                         <tr>
                             <td>${element.oId}</td>  <!-- 訂單ID -->
