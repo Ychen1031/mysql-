@@ -14,7 +14,6 @@ async function DoSelectOrder1(data) {
 
         // 新的 oid 是最大的 oid 加 1
         const newOid = (maxOid + 1).toString().padStart(3, '0');
-        console.log(newOid);
         return newOid;
     } catch (error) {
         console.error('Error fetching data:', error);

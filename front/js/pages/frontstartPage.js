@@ -40,7 +40,6 @@ async function frontstartPage(condition) {
 
     // 渲染產品資料的函數
     const renderProducts = (products) => {
-        console.log(products);
         if (!Array.isArray(products) || products.length === 0) {
             document.querySelector('.products').innerHTML = `<p>No products available at the moment.</p>`;
             return;
@@ -77,23 +76,22 @@ async function frontstartPage(condition) {
     };
 
     const renderOrderPage = (orders) => {
-        console.log(Array.isArray(orders));
         if (!Array.isArray(orders) || orders.length === 0) {
             return `<p>目前沒有可用訂單。</p>`;
         }
 
-        let orderRows = orders.map(order => `
+        let orderRows = orders.reverse().map(order => `
             <tr>
-                <td>${order.orderTime}</td>
-                <td>${order.pName}</td>
-                <td>${order.price}</td>
-                <td>${order.quantity}</td>
-                <td>${order.totoalPrice}</td>
+            <td>${order.orderTime}</td>
+            <td>${order.pName}</td>
+            <td>${order.price}</td>
+            <td>${order.quantity}</td>
+            <td>${order.totoalPrice}</td>
             </tr>
         `).join('');
 
         return `
-            <table border="1">
+            <table>
                 <tr>
                     <td>時間</td>
                     <td>產品</td>
