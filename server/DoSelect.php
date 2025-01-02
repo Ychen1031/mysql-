@@ -20,7 +20,7 @@ function DoSelect() {
     if ($response['status'] == 200) {
         $conn = $response['result'];
         if ($sel_table == "order1" and isset($mId)) {
-            $sql = "SELECT  orderTime, product.pName,price * quantity as totoalPrice
+            $sql = "SELECT  orderTime, product.pName, price, quantity, price * quantity as totoalPrice
                     FROM order1
                     JOIN contain on order1.oId = contain.oId
                     JOIN product on contain.pId = product.pId
