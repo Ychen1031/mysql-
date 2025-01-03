@@ -39,6 +39,8 @@ window.onload = async () => {
             // Math.floor(100 + Math.random() * 900).toString();
 
             const oid = await DoSelectOrder1(data);
+            console.log(oid);
+            
             const orderData = {
                 oId: oid,
                 mId: localStorage.getItem("mId"),
@@ -53,7 +55,6 @@ window.onload = async () => {
             };
             
             // 在這裡處理 orderData，例如發送到伺服器
-            console.log(orderData);
             
             axios.post('../../server/index.php?action=DoInsert', Qs.stringify(orderData))
             .then(response => {
@@ -71,7 +72,7 @@ window.onload = async () => {
                         console.error('Error saving data:', error);
                 alert('訂單確認失敗，請稍後再試123。');
             });
-                } else {
+                } else {           
                     alert('訂單確認失敗，請稍後再試1。');
                 }
             })

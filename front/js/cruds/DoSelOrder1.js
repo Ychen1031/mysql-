@@ -11,7 +11,6 @@ async function DoSelectOrder1(data) {
                 maxOid = oid;
             }
         });
-
         // 新的 oid 是最大的 oid 加 1
         const newOid = (maxOid + 1).toString().padStart(3, '0');
         return newOid;
