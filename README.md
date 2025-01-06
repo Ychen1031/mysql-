@@ -36,7 +36,7 @@
 
 1. **克隆專案代碼**：
    ```bash
-   git clone https://github.com/username/mysql-.git
+   git clone https://github.com/Ychen1031/mysql-.git
    ```
 
 2. **設置伺服器環境**：
