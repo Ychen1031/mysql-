@@ -87,10 +87,20 @@
 ## 預覽截圖
 
 ### 主頁面
-![主頁面](./主畫面.png)
+![主頁面](./主畫面.png)  
+**網址**：  
+[http://localhost/mysql-/front/pages/Frontstage.html#](http://localhost/mysql-/front/pages/Frontstage.html#)
+
+---
 
 ### 訂單管理
-![訂單後台管理](./訂單後台管理.png)
+![訂單後台管理](./訂單後台管理.png)  
+**進入網址**：  
+[http://localhost/mysql-/front/pages/Frontstage.html#](http://localhost/mysql-/front/pages/Frontstage.html#)  
+
+**登入資訊**：  
+- **帳號**：`admin`  
+- **密碼**：`123`
 
 
 
