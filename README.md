@@ -65,7 +65,7 @@
 
 ### 表名與主要欄位
 
-1. **users（會員資料）**
+1. **member（會員資料）**
    - `mId`：會員編號
    - `name`：使用者名稱
    - `phone`：電話
@@ -78,7 +78,7 @@
    - `quantity`：數量
    - `orderTime`：訂單日期
 
-3. **drinks（飲品資料）**
+3. **product（飲品資料）**
    - `pId`：飲品編號
    - `pName`：飲品名稱
    - `category`：類別
