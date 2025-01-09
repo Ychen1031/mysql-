@@ -3,10 +3,10 @@ function startPage() {
     <!-- 頁面標題 -->
     <header class="admin-header">
         <div class="container">
-            <h1>飲料訂購後台管理系統</h1>
+            <h1>無章程飲料訂購管理系統</h1>
             <nav>
             <ul class="nav-links">
-                <li><a href="#">儀表板</a></li>
+                <li><a href="#" id='board'>儀表板</a></li>
                 <li class="dropdown">
                     <a href="#">資料管理</a>
                     <!-- 下拉式選單 -->

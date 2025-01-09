@@ -289,4 +289,29 @@ select:focus {
     font-weight: bold;        /* 粗體 */
 }
 
+/* 儀表板項目樣式 */
+.dashboard-item {
+    background-color: #ffffff; /* 背景色 */
+    border: 1px solid #ddd; /* 邊框 */
+    border-radius: 10px; /* 圓角 */
+    padding: 10px; /* 內邊距 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影 */
+    transition: transform 0.3s, box-shadow 0.3s; /* 過渡效果 */
+}
 
+.dashboard-item:hover {
+    transform: translateY(-5px); /* 向上移動 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 陰影變大 */
+}
+
+.dashboard-item h3 {
+    color: #004085; /* 標題顏色 */
+    margin-bottom: 10px; /* 底部間距 */
+    font-size: 18px; /* 字體大小 */
+}
+
+.dashboard-item p {
+    color: #555; /* 文字顏色 */
+    font-size: 16px; /* 字體大小 */
+    font-weight: bold;
+}

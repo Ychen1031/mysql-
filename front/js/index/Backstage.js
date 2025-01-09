@@ -14,6 +14,9 @@ import { showOrder } from "../pages/showOrder.js";
 import { DoDelOrder } from "../cruds/DoDelOrder.js";
 import { DoUpdOrder } from "../cruds/DoUpdOrder.js";
 import { DoAddOrder } from "../cruds/DoAddOrder.js";
+import { showBoard } from "../pages/showBoard.js";
+import { DoSelBoard } from "../cruds/DoSelBoard.js";
+
 
 window.onload = () => {
     // 檢查是否有驗證通過的 sessionStorage
@@ -29,6 +32,20 @@ window.onload = () => {
         inputs.forEach(input => {
             input.value = ''; // 清空每個輸入框的內容
         });
+    }
+
+    // 儀表板
+    document.getElementById('board').onclick = async () => {
+        document.getElementById('content').innerHTML = showBoard();
+        const response = await DoSelBoard();
+        const info_board = response['data']['result'][0];
+        const infoArray = Object.values(info_board);
+       
+        const infoList = document.getElementsByName('info');
+        for (let i = 0; i < infoList.length; i++) {
+            infoList[i].innerText = infoArray[i];
+        }
+
     }
 
     // 產品查詢

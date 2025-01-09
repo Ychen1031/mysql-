@@ -31,7 +31,7 @@ async function showOrder(sel_table) {
                         </tr>
                     </thead>
                     <tbody>`;
-                rows.forEach(element => {
+                rows.sort((a, b) => a.oId - b.oId).reverse().forEach(element => {
                     str += `
                         <tr>
                             <td>${element.oId}</td>  <!-- 訂單ID -->
