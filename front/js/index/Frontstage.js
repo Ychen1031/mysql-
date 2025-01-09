@@ -35,7 +35,7 @@ window.onload = async () => {
             const productElement = event.target.closest('.product');
 
             const data = {
-                sel_table: 'order1'
+                sel_table: 'order2'
             };
 
             // 確保生成唯一的 oid

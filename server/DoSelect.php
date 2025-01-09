@@ -33,8 +33,11 @@ function DoSelect() {
                 }
                 $sql .= ' ORDER BY DATE_FORMAT(order1.orderTime, "%Y-%m-%d %H:%i:%s")';
             
+            } elseif ($sel_table == "order2") {
+                $sql = 'SELECT order1.oId FROM order1';
+            }
             // 儀表板查詢
-            } elseif ($sel_table == 'board') {
+            elseif ($sel_table == 'board') {
                 $sql = "SELECT 
                         (SELECT SUM(product.price * order1.quantity)
                         FROM order1
